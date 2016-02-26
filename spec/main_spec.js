@@ -11,15 +11,35 @@ var main = require("../lib/main.js");
 
 describe("测试描述", function(){
     sinon.spy(console, 'log');
+    it("Case_Error_SameInput", function(){
 
-    it("测试用例1", function(){
+        var result = main(3,5,5,10);
+        var expect_string = 'ERROR INPUT NUMBERS';
+
+        expect(expect_string).to.equal(result);
+    });
+    it("Case_Error_UnitInput", function(){
+
+        var result = main(3,5,14,10);
+        var expect_string = 'ERROR INPUT NUMBERS';
+
+        expect(expect_string).to.equal(result);
+    });
+    it("HappyPath_10Numbers", function(){
 
         var result = main(3,5,7,10);
         var expect_string = '1 2 Fizz 4 Buzz Fizz Whizz 8 Fizz Buzz ';
 
         expect(expect_string).to.equal(result);
     });
-    it("测试用例2", function(){
+    it("HappyPath_30Numbers", function(){
+
+        var result = main(2,4,9,30);
+        var expect_string = '1 Fizz 3 FizzBuzz 5 Fizz 7 FizzBuzz Whizz Fizz 11 Fizz 13 Fizz 15 FizzBuzz 17 FizzWhizz 19 Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz ';
+
+        expect(expect_string).to.equal(result);
+    });
+    it("HappyPath_100Numbers", function(){
 
         var result = main(3,5,7,100);
         var expect_string = '1 2 Fizz 4 Buzz Fizz Whizz 8 Fizz Buzz 11 Fizz Fizz Whizz FizzBuzz 16 17 Fizz 19 Buzz FizzWhizz 22 Fizz Fizz Buzz 26 Fizz Whizz 29 Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Buzz 41 FizzWhizz Fizz 44 FizzBuzz 46 47 Fizz Whizz Buzz' +
@@ -27,11 +47,5 @@ describe("测试描述", function(){
 
         expect(expect_string).to.equal(result);
     });
-    it("测试用例3", function(){
 
-        var result = main(2,4,9,30);
-        var expect_string = '1 Fizz 3 FizzBuzz 5 Fizz 7 FizzBuzz Whizz Fizz 11 Fizz 13 Fizz 15 FizzBuzz 17 FizzWhizz 19 Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz Fizz ';
-
-        expect(expect_string).to.equal(result);
-    });
 });
